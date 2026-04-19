@@ -1,6 +1,8 @@
 package com.dev.ecommerce.service.impl;
 
+import com.dev.ecommerce.dao.OrderDAO;
 import com.dev.ecommerce.dao.ProductDAO;
+import com.dev.ecommerce.dao.UserDAO;
 import com.dev.ecommerce.data.Order;
 import com.dev.ecommerce.data.Product;
 import com.dev.ecommerce.data.User;
@@ -12,14 +14,10 @@ import com.dev.ecommerce.enums.StatusCode;
 import com.dev.ecommerce.exception.AppException;
 import com.dev.ecommerce.exception.OrderException;
 import com.dev.ecommerce.mappers.OrderMapper;
-import com.dev.ecommerce.dao.OrderDAO;
-import com.dev.ecommerce.dao.UserDAO;
 import com.dev.ecommerce.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
