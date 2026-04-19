@@ -15,9 +15,6 @@ public class Order {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public List<Product> getProducts() {
         return products;

@@ -6,15 +6,15 @@ import java.util.List;
 
 public class CreateOrderRequest {
     private String id;
-    private String uuid;
+    private String userId;
     private List<Product> productDetails;
 
     public String getId() {
         return id;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUserId() {
+        return userId;
     }
 
     public List<Product> getProductDetails() {

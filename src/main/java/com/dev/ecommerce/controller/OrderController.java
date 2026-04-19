@@ -42,8 +42,8 @@ public class OrderController {
      * @return
      * @throws AppException
      */
-    @GetMapping("/{id}/{uuid}")
-    public ResponseEntity<OrderResponse> getOrder(@PathVariable String id, @PathVariable String uuid) throws AppException {
-        return new ResponseEntity<>(orderService.retrieveOrder(id, uuid), HttpStatus.OK);
+    @GetMapping("/{id}/{userId}")
+    public ResponseEntity<OrderResponse> getOrder(@PathVariable String id, @PathVariable String userId) throws AppException {
+        return new ResponseEntity<>(orderService.retrieveOrder(id, userId), HttpStatus.OK);
     }
 }

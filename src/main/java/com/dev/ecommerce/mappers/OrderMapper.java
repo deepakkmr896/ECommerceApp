@@ -30,7 +30,7 @@ public class OrderMapper {
 
     public static User map(CreateUserRequest createUserRequest) throws AppException {
         try {
-            User user = new User(createUserRequest.getUuid());
+            User user = new User(createUserRequest.getUserId());
             user.setName(createUserRequest.getName());
             user.setAge(createUserRequest.getAge());
             user.setGender(createUserRequest.getGender().name());

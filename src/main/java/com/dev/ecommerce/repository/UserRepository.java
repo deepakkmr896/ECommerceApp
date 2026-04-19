@@ -14,10 +14,10 @@ import java.util.Optional;
 public class UserRepository {
     private static Map<String, User> userData = new HashMap<>();
 
-    public Optional<User> getUser(String uuid) throws AppException {
+    public Optional<User> getUser(String userId) throws AppException {
         try {
-            if (userData.containsKey(uuid)) {
-                return Optional.of(userData.get(uuid));
+            if (userData.containsKey(userId)) {
+                return Optional.of(userData.get(userId));
             }
 
             return Optional.empty();
@@ -27,12 +27,12 @@ public class UserRepository {
     }
 
     public void saveUser(User user) throws AppException {
-        if (userData.containsKey(user.getUuid())) {
-            throw new AppException(String.format("User already exists!! uuid:: %s", user.getUuid()), ErrorCode.DUPLICATE_USER_REQUEST);
+        if (userData.containsKey(user.getUserId())) {
+            throw new AppException(String.format("User already exists!! userId:: %s", user.getUserId()), ErrorCode.DUPLICATE_USER_REQUEST);
         }
 
         try {
-            userData.put(user.getUuid(), user);
+            userData.put(user.getUserId(), user);
         } catch (Exception e) {
             throw new DataBaseException("Error while saving user data!!", ErrorCode.DB_ERROR);
         }

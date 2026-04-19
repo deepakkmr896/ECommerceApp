@@ -31,15 +31,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public CreateOrderResponse createOrder(CreateOrderRequest orderRequest) throws AppException {
-        Optional<Order> existingOrder = this.orderRepository.getOrder(orderRequest.getId(), orderRequest.getUuid());
+        Optional<Order> existingOrder = this.orderRepository.getOrder(orderRequest.getId(), orderRequest.getUserId());
 
         if (existingOrder.isPresent()) {
             throw new OrderException(String.format("Order is already present id : %s", orderRequest.getId()), ErrorCode.ORDER_ALREADY_EXISTS);
         }
 
-        Optional<User> user = this.userRepository.getUser(orderRequest.getUuid());
+        Optional<User> user = this.userRepository.getUser(orderRequest.getUserId());
         if (user.isEmpty()) {
-            throw new OrderException(String.format("User not found for uuid : %s", orderRequest.getUuid()), ErrorCode.USER_NOT_FOUND);
+            throw new OrderException(String.format("User not found for userId : %s", orderRequest.getUserId()), ErrorCode.USER_NOT_FOUND);
         }
 
         Order order = OrderMapper.map(orderRequest);
@@ -52,8 +52,8 @@ public class OrderServiceImpl implements OrderService {
 
     // TODO - need to add validation for the retrieval of the order based on the user id
     @Override
-    public OrderResponse retrieveOrder(String id, String uuid) throws AppException {
-        Optional<Order> order = this.orderRepository.getOrder(id, uuid);
+    public OrderResponse retrieveOrder(String id, String userId) throws AppException {
+        Optional<Order> order = this.orderRepository.getOrder(id, userId);
         if (order.isEmpty()) {
             throw new OrderException("No Record Found!!", ErrorCode.ORDER_NOT_FOUND);
         }

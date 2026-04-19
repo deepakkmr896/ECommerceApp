@@ -1,7 +1,7 @@
 package com.dev.ecommerce.data;
 
 public class User {
-    private String uuid;
+    private String userId;
     private String name;
     private String age;
     private String gender;
@@ -9,52 +9,28 @@ public class User {
     private String email;
 
 
-    public User(String uuid) {
-        this.uuid = uuid;
+    public User(String userId) {
+        this.userId = userId;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getAge() {
-        return age;
-    }
-
     public void setAge(String age) {
         this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {

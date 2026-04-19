@@ -3,15 +3,15 @@ package com.dev.ecommerce.domain;
 import com.dev.ecommerce.enums.Gender;
 
 public class CreateUserRequest {
-    private String uuid;
+    private String userId;
     private String name;
     private String age;
     private Gender gender;
     private String phone;
     private String email;
 
-    public String getUuid() {
-        return uuid;
+    public String getUserId() {
+        return userId;
     }
 
     public String getName() {

@@ -7,5 +7,5 @@ import com.dev.ecommerce.exception.AppException;
 
 public interface OrderService {
     CreateOrderResponse createOrder(CreateOrderRequest orderRequest) throws AppException;
-    OrderResponse retrieveOrder(String id, String uuid) throws AppException;
+    OrderResponse retrieveOrder(String id, String userId) throws AppException;
 }

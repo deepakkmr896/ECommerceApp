@@ -26,9 +26,9 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{uuid}")
-    public ResponseEntity<UserResponse> createUser(@PathVariable String uuid) throws AppException {
-        UserResponse response = this.userService.getUser(uuid);
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserResponse> createUser(@PathVariable String userId) throws AppException {
+        UserResponse response = this.userService.getUser(userId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

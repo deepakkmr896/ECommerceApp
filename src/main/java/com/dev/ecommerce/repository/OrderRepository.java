@@ -21,10 +21,10 @@ public class OrderRepository {
     // String, Map<String, order>, products -> List
 
 
-    public Optional<Order> getOrder(String id, String uuid) throws AppException {
+    public Optional<Order> getOrder(String id, String userId) throws AppException {
         try {
-            if (existingOrderMap.containsKey(uuid)) {
-                Map<String, Order> allOrders = existingOrderMap.get(uuid);
+            if (existingOrderMap.containsKey(userId)) {
+                Map<String, Order> allOrders = existingOrderMap.get(userId);
                 if (allOrders.containsKey(id)) {
                     return Optional.of(allOrders.get(id));
                 }
@@ -44,14 +44,14 @@ public class OrderRepository {
         try {
             Order orderData = order.get();
 
-            if (existingOrderMap.containsKey(orderData.getUser().getUuid())) {
-                Map<String, Order> orderMap = existingOrderMap.get(orderData.getUser().getUuid());
+            if (existingOrderMap.containsKey(orderData.getUser().getUserId())) {
+                Map<String, Order> orderMap = existingOrderMap.get(orderData.getUser().getUserId());
                 orderMap.put(orderData.getId(), orderData);
-                existingOrderMap.put(orderData.getUser().getUuid(), orderMap);
+                existingOrderMap.put(orderData.getUser().getUserId(), orderMap);
             }
             Map<String, Order> orderMap = new HashMap<>();
             orderMap.put(orderData.getId(), orderData);
-            existingOrderMap.put(orderData.getUser().getUuid(), orderMap);
+            existingOrderMap.put(orderData.getUser().getUserId(), orderMap);
         } catch (Exception ex) {
             throw new DataBaseException("DB Error while creating order!!", ErrorCode.DB_ERROR);
         }

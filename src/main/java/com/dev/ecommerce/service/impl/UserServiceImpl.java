@@ -26,10 +26,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse getUser(String uuid) throws AppException {
-        Optional<User> user = this.userRepository.getUser(uuid);
+    public UserResponse getUser(String userId) throws AppException {
+        Optional<User> user = this.userRepository.getUser(userId);
         if (user.isEmpty()) {
-            throw new AppException(String.format("User not found, uuid %s", uuid), ErrorCode.USER_NOT_FOUND);
+            throw new AppException(String.format("User not found, userId %s", userId), ErrorCode.USER_NOT_FOUND);
         }
 
         return new UserResponse(user.get());
@@ -37,11 +37,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public CreateUserResponse saveUser(CreateUserRequest userRequest) throws AppException {
-        if (userRequest == null || Strings.isBlank(userRequest.getUuid())) {
+        if (userRequest == null || Strings.isBlank(userRequest.getUserId())) {
             throw new AppException("User Data is not present!!", ErrorCode.INSUFFICIENT_INPUT_DATA);
         }
         User user = OrderMapper.map(userRequest);
         this.userRepository.saveUser(user);
-        return new CreateUserResponse(user.getUuid(), "User Created Successfully!!", StatusCode.SUCCESS);
+        return new CreateUserResponse(user.getUserId(), "User Created Successfully!!", StatusCode.SUCCESS);
     }
 }
