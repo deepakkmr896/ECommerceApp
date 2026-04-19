@@ -22,10 +22,7 @@ public class OrderMapper {
 
     public static OrderResponse map(Order order) throws AppException {
         try {
-            OrderResponse orderResponse = new OrderResponse(order.getId());
-            orderResponse.setProducts(order.getProducts());
-            orderResponse.setUser(order.getUser());
-            return orderResponse;
+            return new OrderResponse(order.getId(), order.getUser(), order.getProducts());
         } catch (Exception e) {
             throw new MapperException("Exception while mapping Order!!", ErrorCode.MAPPER_EXCEPTION);
         }
@@ -36,7 +33,7 @@ public class OrderMapper {
             User user = new User(createUserRequest.getUuid());
             user.setName(createUserRequest.getName());
             user.setAge(createUserRequest.getAge());
-            user.setGender(createUserRequest.getGender());
+            user.setGender(createUserRequest.getGender().name());
             user.setEmail(createUserRequest.getEmail());
             user.setPhone(createUserRequest.getPhone());
             return user;

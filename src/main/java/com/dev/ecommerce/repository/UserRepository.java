@@ -27,6 +27,10 @@ public class UserRepository {
     }
 
     public void saveUser(User user) throws AppException {
+        if (userData.containsKey(user.getUuid())) {
+            throw new AppException(String.format("User already exists!! uuid:: %s", user.getUuid()), ErrorCode.DUPLICATE_USER_REQUEST);
+        }
+
         try {
             userData.put(user.getUuid(), user);
         } catch (Exception e) {

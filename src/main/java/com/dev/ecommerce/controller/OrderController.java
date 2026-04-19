@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 /***
  * Customer can place the order and get the status
  */
-@RestController("/order")
+@RestController
+@RequestMapping("/order")
 public class OrderController {
     private final OrderServiceImpl orderService;
 
@@ -23,9 +24,6 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    // TODO - we will employ the virtual threads to have high efficiency of CPU Usage, as we have high DB I/O call
-    //  interface implementation
-    //  order domain structure
     /***
      * create the order
      * @param createOrderRequest
@@ -44,7 +42,7 @@ public class OrderController {
      * @return
      * @throws AppException
      */
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/{uuid}")
     public ResponseEntity<OrderResponse> getOrder(@PathVariable String id, @PathVariable String uuid) throws AppException {
         return new ResponseEntity<>(orderService.retrieveOrder(id, uuid), HttpStatus.OK);
     }

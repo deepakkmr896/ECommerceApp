@@ -37,11 +37,11 @@ public class OrderRepository {
     }
 
     public void save(Optional<Order> order) throws AppException {
-        try {
-            if (order.isEmpty()) {
-                throw new DataBaseException("Order data is Empty!!", ErrorCode.DB_ERROR);
-            }
+        if (order.isEmpty()) {
+            throw new AppException("Order data is Empty!!", ErrorCode.EMPTY_DATA);
+        }
 
+        try {
             Order orderData = order.get();
 
             if (existingOrderMap.containsKey(orderData.getUser().getUuid())) {

@@ -6,35 +6,13 @@ import com.dev.ecommerce.data.User;
 import java.util.List;
 
 public class OrderResponse {
-    private String id;
-    private User user;
-    private List<Product> products;
+    private final String id;
+    private final User user;
+    private final List<Product> products;
 
-    public OrderResponse(String id) {
+    public OrderResponse(String id, User user, List<Product> products) {
         this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> productDetails) {
-        this.products = productDetails;
+        this.products = products;
     }
 }
