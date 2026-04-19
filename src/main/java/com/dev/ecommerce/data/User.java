@@ -1,6 +1,14 @@
 package com.dev.ecommerce.data;
 
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity(name = "user")
+@Table(name = "dev_user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String userId;
     private String name;
     private String age;
@@ -8,9 +16,11 @@ public class User {
     private String phone;
     private String email;
 
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
-    public User(String userId) {
-        this.userId = userId;
+    public User() {
+
     }
 
     public String getUserId() {

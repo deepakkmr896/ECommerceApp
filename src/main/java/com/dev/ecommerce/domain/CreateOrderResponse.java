@@ -14,17 +14,4 @@ public class CreateOrderResponse {
         this.message = message;
         this.status = status;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-
-    public StatusCode getStatus() {
-        return status;
-    }
 }
